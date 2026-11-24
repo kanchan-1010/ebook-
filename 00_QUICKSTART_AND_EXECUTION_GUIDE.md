@@ -11,8 +11,10 @@
 
 | File Name | Purpose | How to Open / Use |
 |---|---|---|
+| **[index.html](file:///c:/Users/Asus/Downloads/ebook/index.html)** | **Master Portal & Hub** | Double-click or run `start_preview.bat` to launch the master suite in your browser. |
+| **[dear_2027_master_planner_52pages.pdf](file:///c:/Users/Asus/Downloads/ebook/dear_2027_master_planner_52pages.pdf)** | **Publication-Ready A4 PDF** | Ready-to-sell / Ready-to-print 52-page PDF (1.9 MB). Ready to upload to SuperProfile or Gumroad. |
 | **[life_reset_dashboard.html](file:///c:/Users/Asus/Downloads/ebook/life_reset_dashboard.html)** | **Daily Life Reset Web App** | Double-click to open in any web browser (Chrome, Edge, Brave). Saves your goals, budget, protein, and focus timer locally. |
-| **[dear_2027_master_planner_52pages.html](file:///c:/Users/Asus/Downloads/ebook/dear_2027_master_planner_52pages.html)** | **52-Page Master Journal & Planner** | Open in browser. Click **"🖨️ Print / Save as A4 PDF"** to export a ready-to-sell or ready-to-print A4 PDF. |
+| **[dear_2027_master_planner_52pages.html](file:///c:/Users/Asus/Downloads/ebook/dear_2027_master_planner_52pages.html)** | **52-Page Master Journal & Planner** | Open in browser. Click **"🖨️ Print / Save as A4 PDF"** to export or view. |
 | **[02_COMPLETE_PLANNER_CONTENT_52_PAGES.md](file:///c:/Users/Asus/Downloads/ebook/02_COMPLETE_PLANNER_CONTENT_52_PAGES.md)** | **Full Text Manuscript** | Complete source copy for all 52 pages for editing or translation. |
 | **[03_DESIGN_SYSTEM_AND_PAGE_PROMPTS.md](file:///c:/Users/Asus/Downloads/ebook/03_DESIGN_SYSTEM_AND_PAGE_PROMPTS.md)** | **Design Prompts & Palettes** | Color hex codes, typography rules, and prompts for Canva/Midjourney. |
 | **[05_MARKETING_AND_SALES_LAUNCH_PLAYBOOK.md](file:///c:/Users/Asus/Downloads/ebook/05_MARKETING_AND_SALES_LAUNCH_PLAYBOOK.md)** | **Sales & Funnel Engine** | SuperProfile listing copy, 10 Instagram Reel scripts, and viral hooks. |

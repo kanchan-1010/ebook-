@@ -16,7 +16,11 @@ c:\Users\Asus\Downloads\ebook\
 ├── index.html                               # Master Project Portal & Launcher
 ├── life_reset_dashboard.html                # Interactive 5-Pillar Daily Life Reset Web App
 ├── dear_2027_master_planner_52pages.html    # Complete 52-Page Master Journal (A4 Print & PDF Ready)
+├── dear_2027_master_planner_52pages.pdf     # Publication-Ready A4 PDF File (1.9 MB)
 ├── generate_master_planner_html.py          # Automated Python Compiler for the 52-Page Journal
+├── export_planner_to_pdf.py                 # Automated Headless Chrome/Edge PDF Exporter
+├── start_server.py                          # Local HTTP Preview Server with Auto-Browser Launch
+├── start_preview.bat                        # Windows One-Click Hub Launcher
 ├── 00_QUICKSTART_AND_EXECUTION_GUIDE.md     # 90-Day Execution Cadence & PDF Export Instructions
 ├── 01_MARKET_RESEARCH_AND_STRATEGY.md       # Market Analysis, Competitor Benchmark & Buyer Personas
 ├── 02_COMPLETE_PLANNER_CONTENT_52_PAGES.md  # Full 52-Page Guided Journal & Worksheet Manuscript
@@ -59,6 +63,9 @@ c:\Users\Asus\Downloads\ebook\
 
 ---
 
-## 🚀 How to Run the Project
-* **Launch the Master Hub:** Open `c:\Users\Asus\Downloads\ebook\index.html` in your browser.
-* **Re-compile the 52-Page Planner:** Run `python generate_master_planner_html.py`.
+## 🚀 How to Run & Use the Project
+* **One-Click Launch:** Double-click `start_preview.bat` or run `python start_server.py` to open the Master Portal in your default browser.
+* **Open Master Hub Directly:** Double-click `index.html` to open in any browser.
+* **Directly Access the 52-Page PDF:** Open `dear_2027_master_planner_52pages.pdf` (ready for upload to SuperProfile or print).
+* **Re-compile the 52-Page Journal HTML:** Run `python generate_master_planner_html.py`.
+* **Re-export to PDF:** Run `python export_planner_to_pdf.py`.
