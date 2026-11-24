@@ -9,48 +9,47 @@
 ## 1. Brand Identity & Visual Aesthetic Guidelines
 
 ### 1.1 Aesthetic Philosophy
-The visual direction for *Dear 2027, I'm Ready* is defined as **"Cozy Mindful Sanctuary"**. It combines the soothing warmth of Japanese/Korean minimalist stationery with the rich, grounded organic textures of artisanal Indian cotton-rag paper and pressed botanical leaves.
+The visual direction for *Dear 2027, I'm Ready* is defined as **"Modern Minimalist (Nordic Slate)"**. It embraces a Scandinavian architectural aesthetic: high-contrast typography, hairline geometric frames, and a palette of crisp Nordic white, deep charcoal slate, cool steel, and architectural ink black.
 
 It rejects:
-- Harsh, neon productivity colors.
-- Dense corporate spreadsheet tables.
-- Juvenile cartoon doodles.
-- Cluttered, overwhelming decorative elements.
+- Cluttered, juvenile doodle graphics.
+- Low-contrast muddy backgrounds.
+- Dense corporate spreadsheets without breathing space.
 
 It embraces:
-- Generous breathing margins (minimum 0.75-inch / 20mm margins for comfortable home/shop spiral binding).
-- High-contrast, dyslexia-friendly readability.
-- Warm cream background that avoids harsh digital blue-light eye strain when viewed on mobile screens.
+- Generous 22mm left binding margins (spiral/coil binding safe) and 16mm outer margins.
+- Razor-sharp, high-contrast typography for effortless reading and printing.
+- Clean architectural section dividers and minimalist geometric crosshairs.
 
 ---
 
-### 1.2 Official Color System
+### 1.2 Official Color System (Nordic Slate Palette)
 
 | Role | Color Name | Hex Code | RGB | CMYK (Print Safe) | Usage Description |
 |---|---|---|---|---|---|
-| **Base Canvas** | **Warm Cream** | `#FFF8EF` | 255, 248, 239 | 0, 3, 6, 0 | Primary page background color; soft on the eyes, avoids stark sterile white |
-| **Primary Accent** | **Sage Green** | `#A8B89A` | 168, 184, 154 | 9, 0, 16, 28 | Section headers, priority banners, botanical leaf divider accents |
-| **Secondary Accent** | **Dusty Rose** | `#E8B4BC` | 232, 180, 188 | 0, 22, 19, 9 | Gentle highlighting, callout quote boxes, self-care accents |
-| **Gentle Wash** | **Soft Lavender**| `#D9D0EB` | 217, 208, 235 | 8, 11, 0, 8 | Sub-headers, secondary checkboxes, reflective prompt backdrops |
-| **Luxury Detail** | **Muted Gold** | `#D6B56D` | 214, 181, 109 | 0, 15, 49, 16 | Stamped foil title effects, star icons, milestone victory badges |
-| **Typography Dark**| **Dark Brown** | `#49352E` | 73, 53, 46 | 0, 27, 37, 71 | All body copy, worksheet borders, check boxes; softer than harsh #000000 |
+| **Base Canvas** | **Nordic White** | `#F8F9FA` | 248, 249, 250 | 1, 0, 0, 2 | Clean modern paper canvas; crisp, high-contrast, non-glare |
+| **Primary Accent** | **Charcoal Slate** | `#2B323B` | 43, 50, 59 | 27, 15, 0, 77 | Priority banners, active tabs, geometric borders |
+| **Secondary Accent**| **Cool Steel** | `#4A5568` | 74, 85, 104 | 29, 18, 0, 59 | Sub-headers, subtitle tags, secondary emphasis |
+| **Card Fill** | **Pale Mist** | `#EEF1F4` | 238, 241, 244 | 2, 1, 0, 4 | Clean container background for prompt boxes and worksheet cards |
+| **Slate Tone** | **Medium Slate** | `#64748B` | 100, 116, 139 | 28, 17, 0, 45 | Checkbox borders, milestone accents, table lines |
+| **Typography Dark** | **Architectural Ink**| `#0F1216` | 15, 18, 22 | 32, 18, 0, 91 | High-contrast headline and body text; maximum readability |
 
 ---
 
 ### 1.3 Typography System
 
-#### A. Heading & Title Typography (Elegant, Heartfelt Handwritten Scripts)
-* **Primary Display Font (Canva / Web):** `Playfair Display` (Italic / Semi-Bold) paired with `Brittany Signature` or `Amsterdam Four` for author accents.
-* **Alternative Google Fonts (Free / Commercial Use):** `Cormorant Garamond` (Italic) + `Reenie Beanie` or `Caveat` for handwritten script accents.
-* **Usage:** Journal title, section divider titles, author signature, inspirational quote banners.
+#### A. Heading & Title Typography (Modern Architectural Geometric Display)
+* **Primary Display Fonts:** `Space Grotesk` (Bold / Semi-Bold) & `Plus Jakarta Sans`.
+* **Secondary Editorial Serif:** `Playfair Display` (for cover and section emphasis).
+* **Usage:** Journal title, section divider titles, page headlines.
 
-#### B. Sub-Heading Typography (Sophisticated Modern Serif)
-* **Font Choice:** `Cormorant Garamond` (Medium / Bold) or `Lora`.
-* **Usage:** Page titles, worksheet sub-sections, priority pillars.
+#### B. Sub-Heading & Card Typography
+* **Font Choice:** `Plus Jakarta Sans` (Medium / Bold, 600–700) or `Montserrat`.
+* **Usage:** Page subtitles, worksheet section titles, category badges.
 
-#### C. Body Text & Worksheet Labels (Crisp, Highly Legible Sans-Serif)
-* **Font Choice:** `Montserrat` (Regular / Medium, 9pt–10.5pt) or `Inter` / `Nunito Sans`.
-* **Usage:** Instructions, prompt labels, table cells, disclaimers, checkboxes.
+#### C. Body Text & Worksheet Labels
+* **Font Choice:** `Plus Jakarta Sans` / `Montserrat` (400 Regular, 9pt–10.5pt) and `Lora` (for reflective prompts).
+* **Usage:** Prompt descriptions, table cells, disclaimers, checkboxes.
 
 ---
 
