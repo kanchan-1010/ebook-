@@ -95,6 +95,37 @@ def render_single_page(num, title_raw, lines, raw):
     else:
         return render_standard_worksheet(num, title_raw, raw, section)
 
+def render_chintu(icon, tag, text):
+    return f"""
+    <div class="chintu-card">
+        <div class="chintu-avatar">
+            <span class="chintu-icon">{icon}</span>
+            <span class="chintu-name">CHINTU</span>
+        </div>
+        <div class="chintu-bubble">
+            <span class="chintu-title">🦉 {tag}</span>
+            <p class="chintu-text">{text}</p>
+        </div>
+    </div>
+    """
+
+def get_chintu_month_tip(month_name):
+    tips = {
+        "January": ("❄️", "CHINTU'S JAN WARNING", "January motivation is peak danger. Don't buy ₹6,000 running shoes and plan 4:30 AM wakeups on Day 1. Start by not snoozing 5 times!"),
+        "February": ("🍫", "CHINTU'S 28-DAY HACK", "February has only 28 days! That's a built-in discount on habit tracking. 22 days ticked = 80% legend status."),
+        "March": ("📊", "CHINTU'S TAX ADVICE", "Tax saving deadline alert! Please don't panic-call your CA cousin on March 31 at 11:45 PM asking where to dump ₹50,000."),
+        "April": ("🌱", "CHINTU'S Q2 CPR", "Q1 is over. If your New Year goals went into a coma, don't bury them—give them gentle CPR today. Reset is completely free!"),
+        "May": ("🥭", "CHINTU'S HEAT PROTOCOL", "It's 42°C in India. Hydrate or perish. Aamras counts as mental wellness, but keep your 3-liter water bottle closer."),
+        "June": ("🌧️", "CHINTU'S MID-YEAR AUDIT", "Half of 2027 is officially over! Stop panicking. You're alive, you're learning, and tea tastes better in monsoon."),
+        "July": ("☕", "CHINTU'S MONSOON MOAT", "Raining outside? Best excuse to stay in, make ginger cutting chai, and put in 90 minutes of undisturbed deep focus."),
+        "August": ("🇮🇳", "CHINTU'S FREEDOM CALL", "Independence Day month: Officially declare independence from unsolicited career advice at family dinner tables!"),
+        "September": ("🎯", "CHINTU'S SPRINT ALERT", "Don't say 'I will start fresh in 2028'. You still have 120 full days in 2027. The best comeback begins right now."),
+        "October": ("🪔", "CHINTU'S FESTIVE SURVIVAL", "Festive sales are here! Eat sweets, pass on the Soan Papdi box, but protect your UPI PIN from midnight flash sales."),
+        "November": ("🧣", "CHINTU'S BLANKET STRUGGLE", "Winter mornings: The blanket has 10,000 Newton gravitational pull. Count 3-2-1, stand up, and claim the day."),
+        "December": ("🎉", "CHINTU'S FINAL LAP", "Look at you! You made it to December 2027! Don't write off this month—finish with quiet pride and extra cookies.")
+    }
+    return tips.get(month_name, ("🦉", "CHINTU'S MONTHLY NUDGE", "One day at a time. Progress over perfection every single day!"))
+
 def render_cover(raw):
     return """
     <div class="page cover-page" id="page-1">
@@ -319,6 +350,8 @@ def render_how_to_use(raw):
                 </div>
             </div>
 
+            {render_chintu("🦉", "CHINTU'S FIRST RULE OF SURVIVAL", "If you miss 3 days or write with messy handwriting, please DO NOT tear the page out like you did in your school notebook! We don't do drama here in 2027. Just turn the page and keep moving.")}
+
             <div class="pledge-box">
                 <h4>My 2027 Journaling Pledge</h4>
                 <p>I commit to showing up with honesty, patience, and kindness toward myself throughout 2027.</p>
@@ -534,6 +567,8 @@ def render_financial_page(raw, num, section):
                 <h4>🛑 The 48-Hour Impulse Cooling Rule</h4>
                 <p>For any unplanned non-essential purchase above <strong>₹1,000</strong>, I will enforce a strict 48-hour cooling-off pause before clicking "Buy Now". If I still genuinely need it after 48 hours, I will buy it guilt-free from my 30% Lifestyle budget.</p>
             </div>
+
+            {render_chintu("💸", "CHINTU'S MIDNIGHT WALLET ALERT", "🚨 That 1:30 AM Blinkit cart with 1 ice cream bar, chips, and ₹35 late-night delivery charge is NOT a mental health investment. Step away from the UPI PIN!")}
         </div>
         <div class="page-footer">Page {num} of 52 • Dear 2027, I'm Ready.</div>
     </div>
@@ -592,6 +627,8 @@ def render_habit_tracker(raw, num, section):
             <div class="habit-rule-note">
                 <p>💡 <strong>The "Never Miss Twice" Principle:</strong> Missing one day is life happening. Missing two days is the start of a new, unwanted habit. If you miss yesterday, prioritize today above everything else.</p>
             </div>
+
+            {render_chintu("🏋️‍♂️", "CHINTU'S HABIT MATH", "Doing 5 pushups or reading 2 pages = 100% win. Watching 3 hours of gym motivation reels while eating samosas = 0% win. Keep it simple and tick the box!")}
         </div>
         <div class="page-footer">Page {num} of 52 • Dear 2027, I'm Ready.</div>
     </div>
@@ -651,6 +688,8 @@ def render_recovery_plan(raw, num, section):
                     </div>
                 </div>
             </div>
+
+            {render_chintu("☕", "CHINTU'S REALITY HUG", "Had a bad day? Koi baat nahi, even ISRO rockets recalculate trajectory! Drink water, take a warm shower, and sleep early. Tomorrow is a brand new sunrise.")}
         </div>
         <div class="page-footer">Page {num} of 52 • Dear 2027, I'm Ready.</div>
     </div>
@@ -660,6 +699,7 @@ def render_monthly_spread(num, title_raw, raw, section):
     # Extract month name
     month_match = re.search(r'(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER)\s+2027', raw, re.IGNORECASE)
     month_name = month_match.group(1).title() if month_match else f"Month {num-30}"
+    m_icon, m_tag, m_tip = get_chintu_month_tip(month_name)
 
     intention = ""
     for line in raw.split('\n'):
@@ -724,6 +764,8 @@ def render_monthly_spread(num, title_raw, raw, section):
                 <div class="chk-item"><input type="checkbox"> <span>Review previous month's wins and set clean intentions</span></div>
             </div>
 
+            {render_chintu(m_icon, m_tag, m_tip)}
+
             <div class="m-reflection-box">
                 <h4>🌿 End-of-Month Reflection</h4>
                 <p>What worked with ease this month? What needs a gentle realignment?</p>
@@ -762,6 +804,8 @@ def render_jar_of_wins(raw, num, section):
             <div class="jar-quote">
                 <em>"We do not remember days; we remember moments of courage and quiet grace."</em>
             </div>
+
+            {render_chintu("🏆", "CHINTU'S MICRO-WIN CHECK", "Did you drink 2 liters of water? Did you say a polite NO to extra unpaid weekend work? Did you not text your ex? Put it in the jar—that's a certified victory!")}
         </div>
         <div class="page-footer">Page {num} of 52 • Dear 2027, I'm Ready.</div>
     </div>
@@ -800,6 +844,8 @@ def render_closing(raw, num, section):
             <div class="closing-emblem">
                 <span>✦ 🕊️ ✦</span>
             </div>
+
+            {render_chintu("🎓", "CHINTU'S GRADUATION NOTE", "Look at you! You actually stayed true to yourself through 2027. I'm proud of you, buddy. Now treat yourself to extra hot ginger chai and a well-earned celebration!")}
         </div>
         <div class="page-footer">Page {num} of 52 • Dear 2027, I'm Ready.</div>
     </div>
@@ -891,6 +937,16 @@ def render_standard_worksheet(num, title_raw, raw, section):
             </div>
             """)
 
+    extra_chintu = ""
+    if num == 7:
+        extra_chintu = render_chintu("🧐", "CHINTU'S HONEST OBSERVATION", "Admit it: 70% of your 2026 screentime was street food reels and 2:00 AM videos of people cleaning rugs. Forgive yourself, but close Instagram earlier in 2027!")
+    elif num == 17:
+        extra_chintu = render_chintu("🛡️", "CHINTU'S BOUNDARY SHIELD", "When relatives ask 'When is your wedding?' or 'What is your CTC package?', smile politely and say: 'Aunty, my astrologer advised me to keep financials confidential until Sensex reaches 1,00,000.'")
+    elif num == 21:
+        extra_chintu = render_chintu("🍳", "CHINTU'S PROTEIN REALITY", "Chai and 2 Parle-G biscuits do NOT count as a high-protein breakfast! Eat eggs, paneer, sprouts, or tofu before your muscles submit a formal resignation letter.")
+    elif num == 26:
+        extra_chintu = render_chintu("📵", "CHINTU'S BEDTIME SURVIVAL", "Putting your phone on charge outside the bedroom feels like emotional heartbreak on Night 1. But by Night 3, you will sleep like a baby Kumbhakarna.")
+
     return f"""
     <div class="page doc-page" id="page-{num}">
         <div class="page-header">
@@ -902,6 +958,8 @@ def render_standard_worksheet(num, title_raw, raw, section):
             <h2 class="page-title">{html.escape(clean_title)}</h2>
             {f'<p class="section-intro">{html.escape(instructions)}</p>' if instructions else ''}
             <div class="accent-line"></div>
+
+            {extra_chintu}
 
             <div class="worksheet-body">
                 {"".join(elements_html)}
@@ -1259,6 +1317,59 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             font-size: 14px;
             letter-spacing: 8px;
             opacity: 0.5;
+        }}
+
+        /* Chintu Character Widget - Modern Minimalist Slate */
+        .chintu-card {{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-subtle);
+            border-left: 3.5px solid var(--sage-green);
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin: 10px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+        }}
+        .chintu-avatar {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 44px;
+            text-align: center;
+            border-right: 0.5px solid var(--border-subtle);
+            padding-right: 10px;
+        }}
+        .chintu-icon {{
+            font-size: 22px;
+            line-height: 1;
+        }}
+        .chintu-name {{
+            font-size: 7.5px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--espresso-dark);
+            margin-top: 2px;
+        }}
+        .chintu-bubble {{
+            flex: 1;
+        }}
+        .chintu-title {{
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--dusty-rose);
+            display: block;
+            margin-bottom: 2px;
+        }}
+        .chintu-text {{
+            font-size: 10px;
+            line-height: 1.35;
+            color: var(--espresso-dark);
+            font-style: italic;
         }}
 
         /* Cards & Content Layout */
