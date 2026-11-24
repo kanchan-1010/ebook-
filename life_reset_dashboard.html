@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Life Reset Operating System • Daily Action Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #F7F3ED;
+            --card-base: #FFFFFF;
+            --sage-green: #8A9E7B;
+            --sage-light: #EBF1E8;
+            --dusty-rose: #D99B9B;
+            --rose-light: #FBF0F1;
+            --soft-lavender: #9F93B8;
+            --lavender-light: #F4F1FA;
+            --muted-gold: #C29F52;
+            --gold-light: #FDF9EE;
+            --dark-espresso: #382721;
+            --text-muted: #6E5F5A;
+            --border-light: rgba(56, 39, 33, 0.12);
+            --shadow-soft: 0 8px 24px rgba(56, 39, 33, 0.06);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-espresso);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* Top Navigation Header */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-badge {
+            background: var(--sage-light);
+            color: var(--sage-green);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-link-planner {
+            background: var(--dark-espresso);
+            color: #FFF8EF;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-link-planner:hover {
+            background: #231612;
+            transform: translateY(-1px);
+        }
+
+        /* Pillar Tabs */
+        .pillar-nav-wrapper {
+            max-width: 1200px;
+            margin: 24px auto 0;
+            padding: 0 20px;
+        }
+
+        .pillar-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .tab-btn {
+            background: var(--card-base);
+            border: 1px solid var(--border-light);
+            padding: 10px 18px;
+            border-radius: 24px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--muted-gold);
+            color: var(--dark-espresso);
+        }
+
+        .tab-btn.active {
+            background: var(--dark-espresso);
+            color: #FFF8EF;
+            border-color: var(--dark-espresso);
+        }
+
+        /* Main Container */
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .pillar-section {
+            display: none;
+        }
+
+        .pillar-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Banner */
+        .pillar-hero {
+            background: var(--card-base);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-text h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .hero-text p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        .hero-metric-tag {
+            background: var(--gold-light);
+            border: 1px solid var(--muted-gold);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            color: #7B5F23;
+        }
+
+        /* Grid Layout */
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-card {
+            background: var(--card-base);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-soft);
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-tag {
+            font-size: 10.5px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .tag-sage { background: var(--sage-light); color: var(--sage-green); }
+        .tag-rose { background: var(--rose-light); color: #B35868; }
+        .tag-lavender { background: var(--lavender-light); color: #6E5F8B; }
+        .tag-gold { background: var(--gold-light); color: #8C6A24; }
+
+        /* Input Controls & Forms */
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: block;
+            color: var(--dark-espresso);
+        }
+
+        .form-input {
+            width: 100%;
+            background: #FAF8F5;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--dark-espresso);
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--muted-gold);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(194, 159, 82, 0.15);
+        }
+
+        .select-input {
+            width: 100%;
+            background: #FAF8F5;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--dark-espresso);
+            outline: none;
+        }
+
+        /* Calculators Result Panels */
+        .calc-result-box {
+            background: #FAF8F5;
+            border-radius: var(--radius-md);
+            padding: 14px;
+            margin-top: 12px;
+            border: 1px dashed var(--border-light);
+        }
+
+        .res-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .res-row:last-child {
+            margin-bottom: 0;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-light);
+            font-weight: 700;
+        }
+
+        .res-num {
+            font-weight: 700;
+            color: var(--dark-espresso);
+            font-size: 14px;
+        }
+
+        /* Checkbox Lists */
+        .check-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition: background 0.15s;
+        }
+
+        .check-item:hover {
+            background: #FAF8F5;
+        }
+
+        .check-item input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: var(--sage-green);
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Boundary Script Card */
+        .script-card {
+            background: var(--lavender-light);
+            border: 1px solid rgba(159, 147, 184, 0.3);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            margin-top: 12px;
+        }
+
+        .script-quote {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 13.5px;
+            font-style: italic;
+            color: #433757;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .script-tip {
+            font-size: 11px;
+            color: #6E5F8B;
+            font-weight: 600;
+        }
+
+        /* Timer Widget */
+        .timer-display {
+            text-align: center;
+            padding: 24px 0 16px;
+        }
+
+        .timer-digits {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--dark-espresso);
+            letter-spacing: 2px;
+        }
+
+        .timer-status {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .btn-timer {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-start { background: var(--sage-green); color: white; }
+        .btn-pause { background: var(--muted-gold); color: white; }
+        .btn-reset { background: #E5E0D8; color: var(--dark-espresso); }
+
+        /* Habit Progress Bar */
+        .progress-bar-bg {
+            background: #EFEBE5;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--sage-green);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Daily Priorities List */
+        .priority-item-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .priority-num {
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--muted-gold);
+            width: 20px;
+        }
+
+        /* Footer */
+        .dashboard-footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .dashboard-footer a {
+            color: var(--dark-espresso);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="top-nav">
+        <div class="brand-block">
+            <span class="brand-badge">2027 RESET</span>
+            <h1 class="brand-title">Indian Life Reset Operating System</h1>
+        </div>
+        <div class="nav-actions">
+            <a href="dear_2027_master_planner_52pages.html" target="_blank" class="btn-link-planner">
+                📖 Open & Print 52-Page Journal (A4)
+            </a>
+        </div>
+    </header>
+
+    <!-- Pillar Switcher Tabs -->
+    <div class="pillar-nav-wrapper">
+        <div class="pillar-tabs">
+            <button class="tab-btn active" onclick="switchPillar('overview')">✦ Master Overview</button>
+            <button class="tab-btn" onclick="switchPillar('mind')">🧠 Pillar 1: Mind & Boundaries</button>
+            <button class="tab-btn" onclick="switchPillar('wealth')">💰 Pillar 2: Indian Wealth (₹)</button>
+            <button class="tab-btn" onclick="switchPillar('vitality')">🥗 Pillar 3: Physical Vitality</button>
+            <button class="tab-btn" onclick="switchPillar('career')">🚀 Pillar 4: 90-Min Career Moat</button>
+            <button class="tab-btn" onclick="switchPillar('rhythm')">⏰ Pillar 5: 24h Urban Rhythm</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-content">
+
+        <!-- ================= MASTER OVERVIEW ================= -->
+        <section id="sec-overview" class="pillar-section active">
+            <div class="pillar-hero">
+                <div class="hero-text">
+                    <h2>Welcome to Your Daily Sanctuary</h2>
+                    <p>Designed for the ambitious Indian professional who is ready to exit chronic overwhelm, build genuine financial autonomy, protect physical health, and pursue meaningful goals.</p>
+                </div>
+                <div class="hero-metric-tag">
+                    🗓️ Target: Calm & Sustainable 2027
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <!-- Today's Core Top 3 -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🎯 Today's 3 Non-Negotiable Intentions</h3>
+                        <span class="card-tag tag-gold">Daily Focus</span>
+                    </div>
+                    <div class="form-group">
+                        <div class="priority-item-row">
+                            <span class="priority-num">1.</span>
+                            <input type="text" id="prio-1" class="form-input" placeholder="Primary milestone to move forward today" oninput="saveData()">
+                        </div>
+                        <div class="priority-item-row">
+                            <span class="priority-num">2.</span>
+                            <input type="text" id="prio-2" class="form-input" placeholder="Secondary priority to protect" oninput="saveData()">
+                        </div>
+                        <div class="priority-item-row">
+                            <span class="priority-num">3.</span>
+                            <input type="text" id="prio-3" class="form-input" placeholder="Wellness / Boundary habit" oninput="saveData()">
+                        </div>
+                    </div>
+                    <small style="color: var(--text-muted); font-size: 11px;">✨ Auto-saved locally on your machine.</small>
+                </div>
+
+                <!-- Daily Micro-Habits Progress -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🌿 Daily Keystone Habits</h3>
+                        <span class="card-tag tag-sage" id="habit-score">0 / 4 Done</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="habit-progress"></div>
+                    </div>
+                    <div class="check-list" style="margin-top: 10px;">
+                        <label class="check-item">
+                            <input type="checkbox" id="hab-1" onchange="updateHabits()">
+                            <span><strong>Pillar 3:</strong> 8,000 Steps + 70g+ Protein (Paneer/Soya/Eggs)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="hab-2" onchange="updateHabits()">
+                            <span><strong>Pillar 4:</strong> 45–90 Mins Deep Focus (No Slack/Phone)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="hab-3" onchange="updateHabits()">
+                            <span><strong>Pillar 1:</strong> Balcony Sunlight + Zero Morning Phone Scrolling</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="hab-4" onchange="updateHabits()">
+                            <span><strong>Pillar 2:</strong> Tracked Daily ₹ Spends & Enforced 48h Pause</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Quick Action Hub -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>⚡ Quick Life Reset Toolkit</h3>
+                        <span class="card-tag tag-lavender">Instant Access</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button class="tab-btn" onclick="switchPillar('wealth')" style="justify-content: flex-start;">
+                            💰 <strong>50/30/20 Indian Salary Allocator:</strong> Calculate your monthly savings & SIPs.
+                        </button>
+                        <button class="tab-btn" onclick="switchPillar('vitality')" style="justify-content: flex-start;">
+                            🥗 <strong>Indian High-Protein Meal Planner:</strong> Hit your daily macro target.
+                        </button>
+                        <button class="tab-btn" onclick="switchPillar('mind')" style="justify-content: flex-start;">
+                            🛡️ <strong>Family Boundary Scripts:</strong> Handle relatives & intrusive questions.
+                        </button>
+                        <button class="tab-btn" onclick="switchPillar('career')" style="justify-content: flex-start;">
+                            ⏱️ <strong>90-Min Career Moat Timer:</strong> Start your deep work session right now.
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PILLAR 1: MIND & BOUNDARIES ================= -->
+        <section id="sec-mind" class="pillar-section">
+            <div class="pillar-hero">
+                <div class="hero-text">
+                    <h2>Pillar 1: Mental & Social Boundaries</h2>
+                    <p>Reclaiming your mental peace from societal comparison, WhatsApp family chatter, and FOMO. Set polite, loving, and unshakable boundaries.</p>
+                </div>
+                <div class="hero-metric-tag">
+                    🕊️ Peace Over People-Pleasing
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <!-- Boundary Script Generator -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🛡️ Indian Family & Social Boundary Scripts</h3>
+                        <span class="card-tag tag-lavender">Cheat Sheet</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Select Awkward / High-Pressure Scenario:</label>
+                        <select id="script-select" class="select-input" onchange="updateScript()">
+                            <option value="marriage">Relative asking: "When are you getting married / settling down?"</option>
+                            <option value="salary">Nosy acquaintance asking about your salary or package</option>
+                            <option value="work_late">Manager / Colleague pinging on WhatsApp after 8:30 PM</option>
+                            <option value="expensive_plans">Friends pressuring you into expensive weekend restaurant/club plans</option>
+                            <option value="comparison">Family comparing you to "Sharma ji's son/daughter"</option>
+                        </select>
+                    </div>
+                    <div class="script-card">
+                        <p class="script-quote" id="script-display">
+                            "I appreciate your concern, Aunty/Uncle, but I am focusing on my personal milestones right now and will happily share updates when the timing feels right."
+                        </p>
+                        <span class="script-tip" id="script-tip">💡 Deliver calmly with a smile; do not defend or over-explain.</span>
+                    </div>
+                </div>
+
+                <!-- Digital Wellness Protocol -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>📱 Digital Detox & Dopamine Reset</h3>
+                        <span class="card-tag tag-rose">Screen Sanity</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Daily Screen Time Target (Hours):</label>
+                        <input type="number" id="screen-target" class="form-input" value="3.5" step="0.5" oninput="saveData()">
+                    </div>
+                    <div class="check-list">
+                        <label class="check-item">
+                            <input type="checkbox" id="detox-1" onchange="saveData()">
+                            <span>No phone for first 30 minutes after waking up</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="detox-2" onchange="saveData()">
+                            <span>Instagram & short-form video apps deleted or on strict 15m timer</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="detox-3" onchange="saveData()">
+                            <span>Non-essential notifications permanently muted on WhatsApp</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="detox-4" onchange="saveData()">
+                            <span>Phone plugged to charge outside bedroom 30 mins before sleep</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Emergency Bad-Day Protocol -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🌧️ The Bad-Day Protocol (Read When Overwhelmed)</h3>
+                        <span class="card-tag tag-sage">Self-Compassion</span>
+                    </div>
+                    <p style="font-size: 13px; margin-bottom: 12px; line-height: 1.5; font-style: italic;">
+                        "You missed 3 days. You scrolled aimlessly. You ordered junk food. You are a human being, not an algorithm. This reset keeps no penalty points."
+                    </p>
+                    <ol style="font-size: 12.5px; padding-left: 18px; line-height: 1.6;">
+                        <li><strong>Rehydrate:</strong> Drink 1 tall glass of cool water right now.</li>
+                        <li><strong>Clear 1 surface:</strong> Clear just your desk or make your bed (3 mins).</li>
+                        <li><strong>Pick ONE 10-minute micro-task:</strong> Do not attempt to catch up on everything today.</li>
+                        <li><strong>Forgive yourself:</strong> Say aloud: <em>"My consistency resumes right now without shame."</em></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PILLAR 2: INDIAN WEALTH ================= -->
+        <section id="sec-wealth" class="pillar-section">
+            <div class="pillar-hero">
+                <div class="hero-text">
+                    <h2>Pillar 2: Indian Financial OS (₹)</h2>
+                    <p>Building real autonomy in the Indian context: emergency funds, pure health insurance, automated SIPs, and cutting impulsive quick-commerce leaks.</p>
+                </div>
+                <div class="hero-metric-tag">
+                    📈 Wealth & Security in ₹ INR
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <!-- 50/30/20 Salary Allocator -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>💰 Indian 50/30/20 Salary Allocator</h3>
+                        <span class="card-tag tag-gold">Live Model</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Monthly In-Hand / Net Salary (₹):</label>
+                        <input type="number" id="monthly-salary" class="form-input" value="60000" step="5000" oninput="calculateBudget()">
+                    </div>
+                    <div class="calc-result-box">
+                        <div class="res-row">
+                            <span>🏠 50% Essentials (Rent, Food, Bills, Commute):</span>
+                            <span class="res-num" id="res-needs">₹30,000</span>
+                        </div>
+                        <div class="res-row">
+                            <span>☕ 30% Lifestyle (Dining, Shopping, Movies):</span>
+                            <span class="res-num" id="res-wants">₹18,000</span>
+                        </div>
+                        <div class="res-row">
+                            <span>🌱 20% Wealth & Savings (SIPs, Emergency, PPF):</span>
+                            <span class="res-num" id="res-wealth" style="color: var(--sage-green);">₹12,000</span>
+                        </div>
+                        <div class="res-row">
+                            <span>🎯 Annual Wealth Creation Rate:</span>
+                            <span class="res-num" id="res-annual-wealth">₹1,44,000 / year</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency Runway Calculator -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🛡️ 6-Month Emergency Runway Planner</h3>
+                        <span class="card-tag tag-sage">Safety Moat</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Monthly Minimum Survival Expenses (₹):</label>
+                        <input type="number" id="survival-expense" class="form-input" value="30000" step="2000" oninput="calculateRunway()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Current Emergency Buffer in Bank / FDs (₹):</label>
+                        <input type="number" id="current-buffer" class="form-input" value="60000" step="5000" oninput="calculateRunway()">
+                    </div>
+                    <div class="calc-result-box">
+                        <div class="res-row">
+                            <span>Target 6-Month Emergency Fund:</span>
+                            <span class="res-num" id="res-target-fund">₹1,80,000</span>
+                        </div>
+                        <div class="res-row">
+                            <span>Current Runway Coverage:</span>
+                            <span class="res-num" id="res-runway-months" style="color: #C29F52;">2.0 Months</span>
+                        </div>
+                        <div class="res-row">
+                            <span>Gap to Fund:</span>
+                            <span class="res-num" id="res-fund-gap">₹1,20,000</span>
+                        </div>
+                    </div>
+                    <small style="color: var(--text-muted); font-size: 11px; margin-top: 8px; display: block;">
+                        💡 <strong>Where to park:</strong> 70% in High-Yield Sweep FD / Arbitrage Mutual Fund + 30% in Savings Account for instant UPI access.
+                    </small>
+                </div>
+
+                <!-- 48-Hour Impulse Purchase Pause -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🛑 48-Hour Impulse Spend Pause Log</h3>
+                        <span class="card-tag tag-rose">Anti-Leak</span>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+                        Before buying any unplanned item above <strong>₹1,000</strong> (clothes, gadgets, random online cart items), enter it here and wait 48 hours.
+                    </p>
+                    <div class="form-group">
+                        <input type="text" id="impulse-item" class="form-input" placeholder="Item name & price (e.g. Smartwatch ₹2,999)">
+                    </div>
+                    <button class="btn-timer btn-start" onclick="logImpulse()" style="width: 100%; border-radius: 8px;">
+                        + Start 48-Hour Cooling Timer
+                    </button>
+                    <div id="impulse-list" style="margin-top: 12px; font-size: 12px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PILLAR 3: PHYSICAL VITALITY ================= -->
+        <section id="sec-vitality" class="pillar-section">
+            <div class="pillar-hero">
+                <div class="hero-text">
+                    <h2>Pillar 3: Physical Vitality & Nutrition</h2>
+                    <p>Solving the severe protein deficit in Indian diets, managing high urban cortisol, and getting morning sunlight to reset your circadian rhythm.</p>
+                </div>
+                <div class="hero-metric-tag">
+                    ⚡ High Energy & Stamina
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <!-- Indian Protein & Macro Calculator -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🥗 Indian Protein & Macro Calculator</h3>
+                        <span class="card-tag tag-sage">Fuel Calculator</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Current Bodyweight (kg):</label>
+                        <input type="number" id="body-weight" class="form-input" value="65" oninput="calculateProtein()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Dietary Preference:</label>
+                        <select id="diet-pref" class="select-input" onchange="calculateProtein()">
+                            <option value="veg">100% Vegetarian</option>
+                            <option value="eggetarian">Eggetarian (Vegetarian + Eggs)</option>
+                            <option value="nonveg">Non-Vegetarian (Chicken/Fish)</option>
+                        </select>
+                    </div>
+                    <div class="calc-result-box">
+                        <div class="res-row">
+                            <span>Daily Optimal Protein Target (1.3g/kg):</span>
+                            <span class="res-num" id="res-protein-target" style="color: var(--sage-green);">84.5 g / day</span>
+                        </div>
+                    </div>
+                    <div id="protein-sources-box" style="margin-top: 12px; font-size: 12px; line-height: 1.6;">
+                        <strong>Recommended Daily Food Stack:</strong>
+                        <ul id="protein-stack-list" style="padding-left: 18px; margin-top: 4px;"></ul>
+                    </div>
+                </div>
+
+                <!-- Daily Vitality Tracker -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>💧 Daily Movement & Hydration Counters</h3>
+                        <span class="card-tag tag-gold">Daily Stats</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Water Intake Today (Litres):</label>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <input type="number" id="water-intake" class="form-input" value="2.5" step="0.5" oninput="saveData()">
+                            <span style="font-size: 13px; font-weight: 600;">/ 3.0 L</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Step Count Today:</label>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <input type="number" id="step-count" class="form-input" value="8200" step="500" oninput="saveData()">
+                            <span style="font-size: 13px; font-weight: 600;">/ 8,000 Target</span>
+                        </div>
+                    </div>
+                    <div class="check-list" style="margin-top: 12px;">
+                        <label class="check-item">
+                            <input type="checkbox" id="sun-chk" onchange="saveData()">
+                            <span>15 Mins Morning Sunlight (Balcony/Terrace walk)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="dinner-chk" onchange="saveData()">
+                            <span>Early Dinner finished before 8:15 PM</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- South Asian Essential Blood Marker Audit -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🩸 Essential Indian Health Audit</h3>
+                        <span class="card-tag tag-rose">Biomarkers</span>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
+                        Check these twice a year to prevent chronic fatigue and silent insulin resistance:
+                    </p>
+                    <div class="check-list">
+                        <label class="check-item">
+                            <input type="checkbox" id="test-1" onchange="saveData()">
+                            <span><strong>Vitamin D3:</strong> Optimal > 40 ng/mL (Prevents lethargy & low mood)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="test-2" onchange="saveData()">
+                            <span><strong>Vitamin B12:</strong> Optimal > 400 pg/mL (Critical for vegetarians)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="test-3" onchange="saveData()">
+                            <span><strong>HbA1c & Fasting Insulin:</strong> Check early South Asian metabolic risk</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="test-4" onchange="saveData()">
+                            <span><strong>Thyroid Profile (TSH):</strong> Fatigue and metabolism balance</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PILLAR 4: CAREER MOAT ================= -->
+        <section id="sec-career" class="pillar-section">
+            <div class="pillar-hero">
+                <div class="hero-text">
+                    <h2>Pillar 4: 90-Minute Career Moat Focus</h2>
+                    <p>Building high-leverage skills in the age of AI. Stop reacting to emails all day and carve out 90 minutes of dedicated, unhurried craft mastery.</p>
+                </div>
+                <div class="hero-metric-tag">
+                    ⏱️ Deep Work Timer
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <!-- Deep Focus Timer -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>⏱️ Career Moat Focus Timer</h3>
+                        <span class="card-tag tag-lavender" id="timer-mode-tag">90 Min Deep Block</span>
+                    </div>
+                    <div class="timer-display">
+                        <div class="timer-digits" id="timer-clock">90:00</div>
+                        <div class="timer-status" id="timer-status-text">Ready for Deep Focus</div>
+                    </div>
+                    <div class="timer-controls">
+                        <button class="btn-timer btn-start" id="btn-timer-toggle" onclick="toggleTimer()">▶ Start Focus</button>
+                        <button class="btn-timer btn-reset" onclick="resetTimer(90)">90 Mins</button>
+                        <button class="btn-timer btn-reset" onclick="resetTimer(45)">45 Mins</button>
+                    </div>
+                    <p style="text-align: center; font-size: 11px; color: var(--text-muted); margin-top: 14px;">
+                        💡 Close all chat windows, silence phone notifications, and focus on one hard problem.
+                    </p>
+                </div>
+
+                <!-- Daily Moat Reflection Log -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🛠️ What Did I Build / Master Today?</h3>
+                        <span class="card-tag tag-gold">Competency</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Target Skill or Project Focus:</label>
+                        <input type="text" id="career-skill-title" class="form-input" placeholder="e.g. AI Prompt Engineering / System Design / Financial Modeling" oninput="saveData()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Concrete Output or Insight Learned:</label>
+                        <textarea id="career-output-log" class="form-input" rows="4" placeholder="Write down the core concept, line of code, document, or case study finished..." oninput="saveData()"></textarea>
+                    </div>
+                    <small style="color: var(--text-muted); font-size: 11px;">
+                        "If you can't point to a tangible output after 90 minutes, you were consuming, not building."
+                    </small>
+                </div>
+
+                <!-- Corporate Energy Shield -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🛡️ Corporate Energy Shield</h3>
+                        <span class="card-tag tag-rose">Work-Life Sanity</span>
+                    </div>
+                    <div class="check-list">
+                        <label class="check-item">
+                            <input type="checkbox" id="corp-1" onchange="saveData()">
+                            <span>Scheduled focused calendar blocks for real work (declined non-essential meetings)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="corp-2" onchange="saveData()">
+                            <span>Batch-processed emails and Slack messages at 11 AM and 4 PM only</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="corp-3" onchange="saveData()">
+                            <span>Clean shutdown: logged off office laptop by 7:00 PM without guilt</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PILLAR 5: 24H URBAN RHYTHM ================= -->
+        <section id="sec-rhythm" class="pillar-section">
+            <div class="pillar-hero">
+                <div class="hero-text">
+                    <h2>Pillar 5: 24-Hour Indian Urban Operating System</h2>
+                    <p>A balanced daily rhythm adapted for traffic commutes, family dinners, and deep rest. Protect your morning calm and wind down peacefully at night.</p>
+                </div>
+                <div class="hero-metric-tag">
+                    🌙 Restorative Sleep by 10:30 PM
+                </div>
+            </div>
+
+            <div class="dash-grid">
+                <!-- Calm Morning Protocol -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🌅 Calm Morning Protocol (6:00 AM – 8:30 AM)</h3>
+                        <span class="card-tag tag-sage">Morning Anchor</span>
+                    </div>
+                    <div class="check-list">
+                        <label class="check-item">
+                            <input type="checkbox" id="morn-1" onchange="saveData()">
+                            <span>500ml warm water + pinch of pink salt / lemon</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="morn-2" onchange="saveData()">
+                            <span>15 mins outdoor sunlight exposure (balcony or rooftop walk)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="morn-3" onchange="saveData()">
+                            <span>High-protein breakfast (eggs, sprouts, paneer paratha with minimal oil)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="morn-4" onchange="saveData()">
+                            <span>Review Top 3 Daily Priorities before looking at work emails</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Evening Shutdown Protocol -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🌙 Evening Shutdown & Sleep (7:30 PM – 10:30 PM)</h3>
+                        <span class="card-tag tag-lavender">Deep Rest</span>
+                    </div>
+                    <div class="check-list">
+                        <label class="check-item">
+                            <input type="checkbox" id="eve-1" onchange="saveData()">
+                            <span>Early light dinner completed before 8:15 PM (promotes deep REM sleep)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="eve-2" onchange="saveData()">
+                            <span>15-minute post-dinner digestion stroll (1,500 steps)</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="eve-3" onchange="saveData()">
+                            <span>Digital Sunset: screens off, phone put on charge away from bed</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="eve-4" onchange="saveData()">
+                            <span>Read 10 pages of a physical book or write 1 good win in planner</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Habitat Declutter Checklist -->
+                <div class="grid-card">
+                    <div class="card-header">
+                        <h3>🛋️ Space & Habitat Declutter</h3>
+                        <span class="card-tag tag-gold">Physical Sanctuary</span>
+                    </div>
+                    <div class="check-list">
+                        <label class="check-item">
+                            <input type="checkbox" id="space-1" onchange="saveData()">
+                            <span>Study / Work desk cleared of all loose papers and empty cups</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="space-2" onchange="saveData()">
+                            <span>Bed made neatly upon waking</span>
+                        </label>
+                        <label class="check-item">
+                            <input type="checkbox" id="space-3" onchange="saveData()">
+                            <span>Computer desktop files organized into clean project folders</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        <p>Indian Life Reset Operating System • Designed for <a href="dear_2027_master_planner_52pages.html" target="_blank">Dear 2027, I'm Ready</a> by Kanchan Pathare</p>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Tab Navigation
+        function switchPillar(pillarId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.pillar-section').forEach(sec => sec.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            const targetSec = document.getElementById('sec-' + pillarId);
+            if (targetSec) targetSec.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Habit Scoring
+        function updateHabits() {
+            let total = 4;
+            let checked = 0;
+            for (let i = 1; i <= 4; i++) {
+                if (document.getElementById('hab-' + i).checked) checked++;
+            }
+            const pct = (checked / total) * 100;
+            document.getElementById('habit-progress').style.width = pct + '%';
+            document.getElementById('habit-score').innerText = `${checked} / 4 Done`;
+            saveData();
+        }
+
+        // Pillar 1: Script Generator
+        const scripts = {
+            marriage: {
+                quote: `"I appreciate your concern, Aunty/Uncle, but I am focusing on my personal milestones right now and will happily share updates when the timing feels right."`,
+                tip: `💡 Deliver with a calm, pleasant smile. Never defend or give specific deadlines.`
+            },
+            salary: {
+                quote: `"I'm compensated fairly according to market standards, and right now I'm prioritizing building deep technical and product skills that compound over the next decade."`,
+                tip: `💡 Politely redirects the conversation from voyeuristic numbers to long-term career ambition.`
+            },
+            work_late: {
+                quote: `"Noted! I have logged off for the evening, but I will make this my top priority first thing tomorrow morning at 9:30 AM."`,
+                tip: `💡 Sets a firm psychological precedent that your evenings are not open for casual work banter.`
+            },
+            expensive_plans: {
+                quote: `"That sounds lovely, guys, but it doesn't align with my savings targets this month. Let's do a relaxed chai/coffee meet this weekend instead!"`,
+                tip: `💡 Normalizes financial discipline without guilt or shame.`
+            },
+            comparison: {
+                quote: `"I'm really happy for their success! Everyone's journey and timeline is different, and I am focused on running my own race with honesty."`,
+                tip: `💡 Neutralizes the toxic competitive frame with grace and self-assurance.`
+            }
+        };
+
+        function updateScript() {
+            const val = document.getElementById('script-select').value;
+            if (scripts[val]) {
+                document.getElementById('script-display').innerText = scripts[val].quote;
+                document.getElementById('script-tip').innerText = scripts[val].tip;
+            }
+        }
+
+        // Pillar 2: 50/30/20 Budget Calculator
+        function calculateBudget() {
+            const salary = parseFloat(document.getElementById('monthly-salary').value) || 0;
+            const needs = salary * 0.50;
+            const wants = salary * 0.30;
+            const wealth = salary * 0.20;
+
+            document.getElementById('res-needs').innerText = '₹' + needs.toLocaleString('en-IN');
+            document.getElementById('res-wants').innerText = '₹' + wants.toLocaleString('en-IN');
+            document.getElementById('res-wealth').innerText = '₹' + wealth.toLocaleString('en-IN');
+            document.getElementById('res-annual-wealth').innerText = '₹' + (wealth * 12).toLocaleString('en-IN') + ' / year';
+
+            saveData();
+        }
+
+        function calculateRunway() {
+            const survival = parseFloat(document.getElementById('survival-expense').value) || 1;
+            const current = parseFloat(document.getElementById('current-buffer').value) || 0;
+            const target = survival * 6;
+            const months = (current / survival).toFixed(1);
+            const gap = Math.max(0, target - current);
+
+            document.getElementById('res-target-fund').innerText = '₹' + target.toLocaleString('en-IN');
+            document.getElementById('res-runway-months').innerText = `${months} Months`;
+            document.getElementById('res-fund-gap').innerText = '₹' + gap.toLocaleString('en-IN');
+
+            saveData();
+        }
+
+        function logImpulse() {
+            const input = document.getElementById('impulse-item');
+            if (!input.value.trim()) return;
+            const container = document.getElementById('impulse-list');
+            const item = document.createElement('div');
+            item.style.background = '#FAF8F5';
+            item.style.padding = '8px';
+            item.style.borderRadius = '6px';
+            item.style.marginBottom = '6px';
+            item.style.border = '1px solid var(--border-light)';
+            item.innerHTML = `<strong>⏳ 48h Pause:</strong> ${input.value} <br><small style="color:var(--text-muted)">Logged: ${new Date().toLocaleDateString('en-IN')}</small>`;
+            container.prepend(item);
+            input.value = "";
+        }
+
+        // Pillar 3: Protein & Macro Calculator
+        function calculateProtein() {
+            const weight = parseFloat(document.getElementById('body-weight').value) || 60;
+            const diet = document.getElementById('diet-pref').value;
+            const proteinTarget = (weight * 1.3).toFixed(1);
+            document.getElementById('res-protein-target').innerText = `${proteinTarget} g / day`;
+
+            const list = document.getElementById('protein-stack-list');
+            list.innerHTML = "";
+
+            if (diet === 'veg') {
+                list.innerHTML = `
+                    <li>150g Low-Fat Paneer or Tofu (~27g protein)</li>
+                    <li>50g Soya Chunks boiled (~26g protein)</li>
+                    <li>200g Curd / Greek Yogurt (~10g protein)</li>
+                    <li>1 scoop Certified Whey Protein (~24g protein)</li>
+                    <li><strong>Total Daily Protein: ~87g</strong></li>
+                `;
+            } else if (diet === 'eggetarian') {
+                list.innerHTML = `
+                    <li>3 Whole Eggs / Boiled Eggs (~18g protein)</li>
+                    <li>100g Paneer or Tofu (~18g protein)</li>
+                    <li>1 scoop Whey Protein or Sprouts Bowl (~24g protein)</li>
+                    <li>1 Bowl Dal / Chana with Curd (~15g protein)</li>
+                    <li><strong>Total Daily Protein: ~75–85g</strong></li>
+                `;
+            } else {
+                list.innerHTML = `
+                    <li>150g Grilled Chicken Breast or Fish (~38g protein)</li>
+                    <li>2 Whole Eggs breakfast (~12g protein)</li>
+                    <li>200g Dahi / Curd with meals (~10g protein)</li>
+                    <li>1 scoop Whey or Soya chunks (~24g protein)</li>
+                    <li><strong>Total Daily Protein: ~84–95g</strong></li>
+                `;
+            }
+
+            saveData();
+        }
+
+        // Pillar 4: Timer Logic
+        let timerSeconds = 90 * 60;
+        let timerRunning = false;
+        let timerInterval = null;
+
+        function updateClockDisplay() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            document.getElementById('timer-clock').innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleTimer() {
+            const btn = document.getElementById('btn-timer-toggle');
+            if (!timerRunning) {
+                timerRunning = true;
+                btn.innerText = "⏸ Pause";
+                btn.classList.remove('btn-start');
+                btn.classList.add('btn-pause');
+                document.getElementById('timer-status-text').innerText = "Deep Focus in Progress (Stay off Slack)";
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateClockDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        timerRunning = false;
+                        btn.innerText = "▶ Start Focus";
+                        alert("🎉 Brilliant work! 90-minute career focus block complete. Stand up, stretch, and hydrate.");
+                    }
+                }, 1000);
+            } else {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                btn.innerText = "▶ Resume";
+                btn.classList.remove('btn-pause');
+                btn.classList.add('btn-start');
+                document.getElementById('timer-status-text').innerText = "Paused";
+            }
+        }
+
+        function resetTimer(mins) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            timerSeconds = mins * 60;
+            updateClockDisplay();
+            const btn = document.getElementById('btn-timer-toggle');
+            btn.innerText = "▶ Start Focus";
+            btn.classList.remove('btn-pause');
+            btn.classList.add('btn-start');
+            document.getElementById('timer-mode-tag').innerText = `${mins} Min Deep Block`;
+            document.getElementById('timer-status-text').innerText = `Ready for ${mins}-min sprint`;
+        }
+
+        // Local Storage Auto-Save
+        function saveData() {
+            const state = {};
+            document.querySelectorAll('input[type="text"], input[type="number"], textarea').forEach(el => {
+                if (el.id) state[el.id] = el.value;
+            });
+            document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+                if (el.id) state[el.id] = el.checked;
+            });
+            localStorage.setItem('indian_life_reset_state', JSON.stringify(state));
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem('indian_life_reset_state');
+            if (!saved) {
+                calculateBudget();
+                calculateRunway();
+                calculateProtein();
+                return;
+            }
+            try {
+                const state = JSON.parse(saved);
+                for (const id in state) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        if (el.type === 'checkbox') el.checked = state[id];
+                        else el.value = state[id];
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+            }
+            calculateBudget();
+            calculateRunway();
+            calculateProtein();
+            updateHabits();
+        }
+
+        window.onload = loadData;
+    </script>
+</body>
+</html>

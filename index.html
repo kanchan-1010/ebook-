@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project eBook • Dear 2027, I'm Ready — Master Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream-bg: #FFF8EF;
+            --card-bg: #FFFFFF;
+            --sage: #8A9E7B;
+            --sage-light: #EBF1E8;
+            --dusty-rose: #D99B9B;
+            --rose-light: #FBF0F1;
+            --gold: #C29F52;
+            --gold-light: #FDF9EE;
+            --espresso: #382721;
+            --muted: #6E5F5A;
+            --border: rgba(56, 39, 33, 0.12);
+            --shadow: 0 10px 30px rgba(56, 39, 33, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--cream-bg);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--espresso);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .hero-tag {
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--sage);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 650px;
+            margin: 0 auto 20px;
+        }
+
+        .author-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--gold-light);
+            border: 1px solid var(--gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #7B5F23;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(56, 39, 33, 0.12);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            font-size: 24px;
+        }
+
+        .card-tag {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        .tag-sage { background: var(--sage-light); color: var(--sage); }
+        .tag-rose { background: var(--rose-light); color: #B35868; }
+        .tag-gold { background: var(--gold-light); color: #8C6A24; }
+        .tag-dark { background: rgba(56, 39, 33, 0.1); color: var(--espresso); }
+
+        .card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--espresso);
+            color: #FFF8EF;
+        }
+
+        .btn-primary:hover {
+            background: #1F1410;
+        }
+
+        .btn-secondary {
+            background: #FAF8F5;
+            color: var(--espresso);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage-light);
+            border-color: var(--sage);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header -->
+        <header class="hero">
+            <div class="hero-tag">Project eBook • Master Hub</div>
+            <h1>Dear 2027, I'm Ready.</h1>
+            <p>A Complete Life Reset, Goal-Setting Journal & Daily Operating System for the Indian Market.</p>
+            <div class="author-badge">
+                ✍️ Author: Kanchan Pathare • Target Audience: Ages 18–35
+            </div>
+        </header>
+
+        <!-- Core Apps Grid -->
+        <div class="grid">
+            <!-- App 1: Daily Dashboard -->
+            <div class="card" style="border-top: 4px solid var(--sage);">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">⚡</span>
+                        <span class="card-tag tag-sage">Interactive Web App</span>
+                    </div>
+                    <h3>Daily Life Reset Dashboard</h3>
+                    <p>Interactive single-page operating system with live 50/30/20 Indian salary allocator, emergency fund runway calculator, protein & macro tracker, 90-minute focus timer, and family boundary scripts.</p>
+                </div>
+                <a href="life_reset_dashboard.html" class="btn btn-primary">🚀 Launch Dashboard</a>
+            </div>
+
+            <!-- App 2: 52-Page Master Planner -->
+            <div class="card" style="border-top: 4px solid var(--gold);">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📖</span>
+                        <span class="card-tag tag-gold">A4 Print & PDF Ready</span>
+                    </div>
+                    <h3>Complete 52-Page Master Journal</h3>
+                    <p>The complete, styled publication in Warm Cream and Sage Green. Includes all 52 pages: 2026 Reflection, 8-Spoke Wheel of Life, Vision Board, 12 Dated Monthly Spreads, and Quarterly Reviews.</p>
+                </div>
+                <a href="dear_2027_master_planner_52pages.html" target="_blank" class="btn btn-primary">🖨️ Open & Print A4 PDF</a>
+            </div>
+
+            <!-- Doc 3: Quickstart & Execution -->
+            <div class="card" style="border-top: 4px solid var(--dusty-rose);">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📋</span>
+                        <span class="card-tag tag-rose">Execution Guide</span>
+                    </div>
+                    <h3>90-Day Reset & Launch Playbook</h3>
+                    <p>Step-by-step roadmap to implement the 5 pillars personally and launch the digital journal commercially on SuperProfile, Gumroad, or WhatsApp.</p>
+                </div>
+                <a href="00_QUICKSTART_AND_EXECUTION_GUIDE.md" class="btn btn-secondary">📄 View Execution Guide</a>
+            </div>
+
+            <!-- Manuscript Content -->
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📝</span>
+                        <span class="card-tag tag-dark">Full Manuscript</span>
+                    </div>
+                    <h3>Complete 52-Page Text Manuscript</h3>
+                    <p>Raw text content of all 52 pages from Page 1 (Front Cover) to Page 52 (Back Cover) with complete questions, prompts, and disclaimers.</p>
+                </div>
+                <a href="02_COMPLETE_PLANNER_CONTENT_52_PAGES.md" class="btn btn-secondary">📄 Read Manuscript</a>
+            </div>
+
+            <!-- Design Prompts -->
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🎨</span>
+                        <span class="card-tag tag-dark">Brand & Canva Specs</span>
+                    </div>
+                    <h3>Design System & Page Prompts</h3>
+                    <p>Visual brand identity guidelines, hex colors, typography hierarchy, and 52 individual page design prompts for Canva or Midjourney.</p>
+                </div>
+                <a href="03_DESIGN_SYSTEM_AND_PAGE_PROMPTS.md" class="btn btn-secondary">📄 Open Design Specs</a>
+            </div>
+
+            <!-- Marketing & Sales Playbook -->
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">📈</span>
+                        <span class="card-tag tag-dark">Marketing & Sales</span>
+                    </div>
+                    <h3>Sales Listing & Reel Scripts</h3>
+                    <p>Ready-to-use SuperProfile listing copy, 10 high-converting Instagram reel scripts, 5 carousel blueprints, and unit sales break-even matrix.</p>
+                </div>
+                <a href="05_MARKETING_AND_SALES_LAUNCH_PLAYBOOK.md" class="btn btn-secondary">📄 Open Sales Playbook</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>Project eBook: "Dear 2027, I'm Ready."</strong> • Designed by Kanchan Pathare • Location: <code>c:\Users\Asus\Downloads\ebook</code></p>
+        </footer>
+    </div>
+</body>
+</html>
