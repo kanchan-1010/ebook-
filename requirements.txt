@@ -1,0 +1,8 @@
+# Core dependencies for Dear 2027 Publishing Suite
+# Note: Core Python scripts (generate_master_planner_html.py, export_planner_to_pdf.py, start_server.py)
+# run entirely on Python 3.8+ standard library.
+#
+# Optional automation libraries:
+pypdf>=3.17.0
+playwright>=1.40.0
+requests>=2.31.0
